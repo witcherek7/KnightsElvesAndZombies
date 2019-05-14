@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 782053913}
   - component: {fileID: 3241263790435921399}
   - component: {fileID: 8814130732224314308}
+  - component: {fileID: 337349604995204346}
   m_Layer: 11
   m_Name: Kapelusznik_ruch
   m_TagString: Creatures
@@ -175,3 +176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 3
+--- !u!114 &337349604995204346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782053909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87efeb47add08d4ab8f061faa0c5967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfGoldPerFiveSeconds: 1

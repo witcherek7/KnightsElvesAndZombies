@@ -27,7 +27,7 @@ TagManager:
   - City_object
   - Background
   - Creatures
-  - 
+  - Flag
   - 
   - 
   - 
@@ -68,4 +68,7 @@ TagManager:
     locked: 0
   - name: Buttons
     uniqueID: 2840753437
+    locked: 0
+  - name: Flag
+    uniqueID: 2776427091
     locked: 0

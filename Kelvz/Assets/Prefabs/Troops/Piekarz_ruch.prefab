@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 836831647}
   - component: {fileID: 4961219444062704002}
   - component: {fileID: 1238221807809622357}
+  - component: {fileID: 3563293482512396081}
   m_Layer: 11
   m_Name: Piekarz_ruch
   m_TagString: Creatures
@@ -175,3 +176,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c105ed9a59b6ff947be937817d8a774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3563293482512396081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836831643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87efeb47add08d4ab8f061faa0c5967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfGoldPerFiveSeconds: 1
