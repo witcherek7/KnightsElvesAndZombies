@@ -7,6 +7,7 @@ public class BuyPeasantButton : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    private int peasantNumber = 0;
     public int price;
     private float elapsed;
     private int progressCountInt = 0;
@@ -19,7 +20,7 @@ public class BuyPeasantButton : MonoBehaviour
     private Text text;
     private bool toBuild = false;
     private GameObject tempPeasant, randomPeasant;
-    private int peasantRandomizer = 0 ;
+    private int peasantRandomizer = 0;
     static Random rnd = new Random();
     private List<GameObject> peasantList = new List<GameObject>();
     void Start()
@@ -47,16 +48,24 @@ public class BuyPeasantButton : MonoBehaviour
 
     bool CanIBuild()
     {
-        if (GameObject.Find("Player").GetComponent<Player>().gold >= price)
+        if (peasantNumber < 4)
         {
-            Debug.Log("Player gold before build: " + GameObject.Find("Player").GetComponent<Player>().gold);
-            GameObject.Find("Player").GetComponent<Player>().spendGold(price);
-            return true;
+            if (GameObject.Find("Player").GetComponent<Player>().gold >= price)
+            {
+                Debug.Log("Player gold before build: " + GameObject.Find("Player").GetComponent<Player>().gold);
+                GameObject.Find("Player").GetComponent<Player>().spendGold(price);
+                return true;
+            }
+            else
+            {
+                GameObject.Find("Player_Messages_Text").GetComponent<Messages>().DisplayMessage("Lack of gold.");
+                Debug.Log("Player gold: " + GameObject.Find("Player").GetComponent<Player>().gold);
+                return false;
+            }
         }
         else
         {
-            GameObject.Find("Player_Messages_Text").GetComponent<Messages>().DisplayMessage("Lack of gold.");
-            Debug.Log("Player gold: " + GameObject.Find("Player").GetComponent<Player>().gold);
+            GameObject.Find("Player_Messages_Text").GetComponent<Text>().text = "Max number of peasant per this building.";
             return false;
         }
     }
@@ -89,15 +98,16 @@ public class BuyPeasantButton : MonoBehaviour
                     randomPeasant = peasantList[peasantRandomizer];
                     tempPeasant = (GameObject)Instantiate(randomPeasant, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 2), Quaternion.identity);
                     tempPeasant.transform.parent = GameObject.Find("Player").transform;
+                    peasantNumber +=1;
                     progressCountInt = 0;
-                    GameObject.Find("Player").GetComponent<Player>().soldierList.Add(tempPeasant);
+                    GameObject.Find("Player").GetComponent<Player>().addPeasantToList(tempPeasant);
                     Debug.Log(GameObject.Find("Player").GetComponent<Player>().soldierList.Count);
                     toBuild = false;
                     ShowPrice();
-                    peasantRandomizer +=1;
-                    if(peasantRandomizer==4)
+                    peasantRandomizer += 1;
+                    if (peasantRandomizer == 4)
                     {
-                        peasantRandomizer=0;
+                        peasantRandomizer = 0;
                     }
 
                 }
