@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\mereman\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mereman\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Kelvz.395511770.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mereman\Documents\Kelvz\Kelvz" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Gothicvania" t="Include">
+          <e p="Gothicvania Cemetery Artwork" t="Include">
+            <e p="about.txt" t="Include" />
+          </e>
+        </e>
+        <e p="P4Connect" t="Include">
+          <e p="readme.txt" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="GitHub" t="Include">
+            <e p="Editor" t="Include">
+              <e p="credits.txt" t="Include" />
+              <e p="eula.txt" t="Include" />
+              <e p="ExtensionLoader.cs" t="Include" />
+              <e p="UnityAPIWrapper.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Building" t="Include">
+            <e p="Armory.cs" t="Include" />
+            <e p="BuildButton.cs" t="Include" />
+            <e p="Building.cs" t="Include" />
+            <e p="BuyTroopsButton.cs" t="Include" />
+            <e p="Confirm.cs" t="Include" />
+            <e p="Farm.cs" t="Include" />
+            <e p="SecondaryBuildButtons.cs" t="Include" />
+          </e>
+          <e p="Generating" t="Include">
+            <e p="BuyPeasantButton.cs" t="Include" />
+            <e p="Farming.cs" t="Include" />
+          </e>
+          <e p="Messages.cs" t="Include" />
+          <e p="MoveCamera.cs" t="Include" />
+          <e p="People" t="Include">
+            <e p="RandomizeDirection.cs" t="Include" />
+            <e p="WalkOnTrigger.cs" t="Include" />
+          </e>
+          <e p="Player.cs" t="Include" />
+          <e p="Scene" t="Include">
+            <e p="BackgroundScroll.cs" t="Include" />
+            <e p="ScrollingBackground.cs" t="Include" />
+          </e>
+          <e p="Troops" t="Include">
+            <e p="Hero.cs" t="Include" />
+          </e>
+        </e>
+        <e p="ŚwiatoweAssety" t="Include">
+          <e p="Gothicvania" t="Include">
+            <e p="Gothicvania Cemetery Artwork" t="Include">
+              <e p="about.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Kelvz.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
