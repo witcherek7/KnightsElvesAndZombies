@@ -51,11 +51,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Clouds
+    uniqueID: 1171887539
+    locked: 0
   - name: background
     uniqueID: 505945697
-    locked: 0
-  - name: middleground
-    uniqueID: 1171887539
     locked: 0
   - name: City_object
     uniqueID: 1144157229
