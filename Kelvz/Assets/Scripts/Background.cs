@@ -8,10 +8,11 @@ public class Background : MonoBehaviour
     public GameObject dayCloud;
     public GameObject nightCloud;
     public GameObject timeText;
-    private float elapsed, elapsedNight, elapsedDay ;
+    private float elapsed, elapsedNight, elapsedDay;
     private int minutes = 0;
     private int hours = 7;
     private int dayTimeMinutes = 420;
+    private float opacity = 1f;
 
     // Start is called before the first frame update
     // Start time should be 7:00
@@ -24,7 +25,7 @@ public class Background : MonoBehaviour
     void Update()
     {
         elapsed += Time.deltaTime;
-        if (elapsed >= 0.5f)
+        if (elapsed >= 0.2f)
         {
             hours = dayTimeMinutes / 60;
             minutes = dayTimeMinutes % 60;
@@ -39,23 +40,49 @@ public class Background : MonoBehaviour
             }
 
             dayTimeMinutes += 1;
-            elapsed = elapsed % 0.5f;
+            elapsed = elapsed % 0.2f;
 
 
         }
 
-        if(hours == 24)
+        if (hours == 24)
         {
             dayTimeMinutes = 0;
+            hours = 0;
+            minutes = 0;
         }
 
-        if(hours > 19 && hours < 7)
+        if (hours > 19 || hours < 7)
         {
-            
+            if (opacity > 0)
+            {
+                Debug.Log("Getting darker");
+                elapsedDay += Time.deltaTime;
+                if (elapsedDay >= 0.5f)
+                {
+                    elapsedDay = elapsedDay % 0.5f;
+                    opacity = opacity - 0.02f;
+
+                    dayCloud.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity);
+
+                }
+            }
         }
         else
         {
+            if (opacity < 1)
+            {
+                Debug.Log("Getting lighter");
+                elapsedDay += Time.deltaTime;
+                if (elapsedDay >= 0.5f)
+                {
+                    elapsedDay = elapsedDay % 0.5f;
+                    opacity = opacity + 0.02f;
 
+                    dayCloud.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity);
+
+                }
+            }
         }
 
 
