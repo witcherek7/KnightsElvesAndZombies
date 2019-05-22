@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7288576193482490508}
   - component: {fileID: 3304473789264187700}
   - component: {fileID: 5987455505586295870}
+  - component: {fileID: 4447929439725795917}
   m_Layer: 11
   m_Name: Hero
   m_TagString: Troop
@@ -148,3 +149,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.59}
   m_EdgeRadius: 0
+--- !u!114 &4447929439725795917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249643020284618845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa5dcadd96d24b4288c3171c2e1abd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

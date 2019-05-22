@@ -2,16 +2,24 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\mereman\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\mereman\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Kelvz.395511770.00" t="ExcludeRecursive" />
-    <e p="C:\Users\mereman\Documents\Kelvz\Kelvz" t="IncludeRecursive">
+    <e p="C:\Users\mereman\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Kelvz.-394581825.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mereman\Documents\KnightsElvesAndZombies\Kelvz" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Gothicvania" t="Include">
-          <e p="Gothicvania Cemetery Artwork" t="Include">
-            <e p="about.txt" t="Include" />
+        <e p="Assets" t="Include">
+          <e p="Gothicvania" t="Include">
+            <e p="Gothicvania Cemetery Artwork" t="Include">
+              <e p="about.txt" t="Include" />
+            </e>
+          </e>
+          <e p="SpritesArchers" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Change_Sprite.cs" t="Include" />
+            </e>
           </e>
         </e>
+        <e p="Hero_Action.cs" t="Include" />
         <e p="P4Connect" t="Include">
           <e p="readme.txt" t="Include" />
         </e>
@@ -26,6 +34,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Background.cs" t="Include" />
           <e p="Building" t="Include">
             <e p="Armory.cs" t="Include" />
             <e p="BuildButton.cs" t="Include" />
@@ -34,6 +43,7 @@
             <e p="Confirm.cs" t="Include" />
             <e p="Farm.cs" t="Include" />
             <e p="SecondaryBuildButtons.cs" t="Include" />
+            <e p="Tower.cs" t="Include" />
           </e>
           <e p="Generating" t="Include">
             <e p="BuyPeasantButton.cs" t="Include" />
@@ -52,13 +62,6 @@
           </e>
           <e p="Troops" t="Include">
             <e p="Hero.cs" t="Include" />
-          </e>
-        </e>
-        <e p="ŚwiatoweAssety" t="Include">
-          <e p="Gothicvania" t="Include">
-            <e p="Gothicvania Cemetery Artwork" t="Include">
-              <e p="about.txt" t="Include" />
-            </e>
           </e>
         </e>
       </e>
