@@ -6,7 +6,7 @@ public class WalkOnTrigger : MonoBehaviour
 {
     private bool _wasTriggered;
     [SerializeField] private float waitTime = 3;
-
+    public int health = 100;
     private Animator _animator;
     private Vector3 localScale;
 
@@ -26,6 +26,7 @@ public class WalkOnTrigger : MonoBehaviour
     {
         localScale = transform.localScale;
         _animator = GetComponent<Animator>();
+        _animator.SetFloat("life", health);
 //        StartCoroutine(Idle());
 
     }
@@ -59,5 +60,10 @@ public class WalkOnTrigger : MonoBehaviour
         }
         _animator.SetTrigger("building");
 
+    }
+    private void Update() {
+        if(health<0){
+            Destroy(gameObject);
+        }
     }
 }

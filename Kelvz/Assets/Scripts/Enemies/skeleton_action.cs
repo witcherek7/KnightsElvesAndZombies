@@ -18,6 +18,7 @@ public class skeleton_action : MonoBehaviour
     {
         // localScale = transform.localScale;
         _animator = GetComponent<Animator>();
+        _animator.SetFloat("life", health);
         
 //        StartCoroutine(Idle());
     }

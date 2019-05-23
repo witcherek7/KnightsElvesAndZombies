@@ -16,6 +16,8 @@ public class Hero_Action : MonoBehaviour
     {
         // localScale = transform.localScale;
         _animator = GetComponent<Animator>();
+        _animator.SetFloat("life", health);
+
 //        StartCoroutine(Idle());
     }
     void make_damage(){
@@ -36,6 +38,10 @@ public class Hero_Action : MonoBehaviour
            // jeśli wróg, to nakurwiaj
            _animator.SetTrigger("hero_attack");
            // tu wyślij sygnał odbieranko życia
+        }
+
+        if (other.gameObject.CompareTag("Flag")){
+            _animator.SetTrigger("hero_idle");
         }
     }
         private void OnTriggerStay2D(Collider2D other)
