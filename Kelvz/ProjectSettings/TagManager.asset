@@ -73,3 +73,6 @@ TagManager:
   - name: Flag
     uniqueID: 2776427091
     locked: 0
+  - name: Enemies
+    uniqueID: 3988250687
+    locked: 0

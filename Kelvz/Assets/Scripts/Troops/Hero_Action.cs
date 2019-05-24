@@ -8,23 +8,39 @@ public class Hero_Action : MonoBehaviour
     //
     public int health = 100;
     public int attack_strength = 10;
+    [SerializeField] private float animation_time = 1;
     //
-
     private Animator _animator;
-
+    private GameObject other_obj;
+// /////////////////
     void Start()
     {
-        // localScale = transform.localScale;
         _animator = GetComponent<Animator>();
         _animator.SetFloat("life", health);
 
-//        StartCoroutine(Idle());
     }
-    void make_damage(){
-        
+    private void Update() {
+        animation_time -= Time.deltaTime;
+        _animator.SetFloat("attack_time", animation_time);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+ // /////////////////   
+    private void TakeDamage(int amount){
+        health -= amount;
+        _animator.SetFloat("life", health);
+        Debug.Log("hero got atacked, health = "+health.ToString());
+    }
+
+    private void Destroy(){
+        Destroy(gameObject);
+    }
+    public void Attack(GameObject other_obj){
+        other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
+        Debug.Log("Hero attacked: -"+attack_strength);
+    }
+    public void OnTriggerEnter2D(Collider2D other)
     {
+        other_obj = other.gameObject; // ???????
+        Debug.Log("hero loaded other obj as \n-----------"+other_obj.name.ToString());
         // jeśli nie koliduje, to idzie w prawo, jeśli koliduje to:
         if (other.gameObject.CompareTag("Flag"))
         {
@@ -37,14 +53,13 @@ public class Hero_Action : MonoBehaviour
         {
            // jeśli wróg, to nakurwiaj
            _animator.SetTrigger("hero_attack");
-           // tu wyślij sygnał odbieranko życia
         }
 
         if (other.gameObject.CompareTag("Flag")){
             _animator.SetTrigger("hero_idle");
         }
     }
-        private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy")){
             _animator.SetTrigger("hero_attack");
@@ -54,5 +69,17 @@ public class Hero_Action : MonoBehaviour
             _animator.SetTrigger("hero_idle");
         }
     }
+    public void Attack_trigger()
+    {
+        // Debug.Log("waiting for "+animation_time.ToString());
+        if(animation_time<0){
+            animation_time = 1.0f;
+            if(other_obj){
+                Attack(other_obj);
+            }
+        }
+        // yield return new WaitForSeconds(animation_time);
+    }
+
 
 }

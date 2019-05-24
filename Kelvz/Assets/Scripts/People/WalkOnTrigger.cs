@@ -21,6 +21,15 @@ public class WalkOnTrigger : MonoBehaviour
         }
         return 1;
     }
+
+    private void TakeDamage(int amount){
+        health -= amount;
+        _animator.SetFloat("life", health);
+    }
+
+    private void Destroy(){
+        Destroy(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
