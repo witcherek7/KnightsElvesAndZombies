@@ -190,4 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attack_strength: 10
-  attack_range: 5
+  attackDelay: 1
+  time_to_attack: 0
+  attack_range: 1
+  other_obj: {fileID: 0}

@@ -6,13 +6,33 @@ public class WalkOnTrigger : MonoBehaviour
 {
     private bool _wasTriggered;
     [SerializeField] private float waitTime = 3;
-    public int health = 100;
+    public int health = 50;
     private Animator _animator;
     private Vector3 localScale;
 
 //    private static readonly int Buidling = Animator.StringToHash("buidling");
 
-    
+    void Start()
+    {
+        localScale = transform.localScale;
+        _animator = GetComponent<Animator>();
+        _animator.SetFloat("life", health);
+//        StartCoroutine(Idle());
+    }
+    private void Update() {
+
+    }
+    private void TakeDamage(int amount){
+        health -= amount;
+        _animator.SetFloat("life", health);
+        if(health<0){
+            Destroy(gameObject);
+        }
+    }
+
+    private void Destroy(){
+        Destroy(gameObject);
+    }
     private int getDirection()
     {
         if (Random.value>=0.5)
@@ -22,24 +42,6 @@ public class WalkOnTrigger : MonoBehaviour
         return 1;
     }
 
-    private void TakeDamage(int amount){
-        health -= amount;
-        _animator.SetFloat("life", health);
-    }
-
-    private void Destroy(){
-        Destroy(gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        localScale = transform.localScale;
-        _animator = GetComponent<Animator>();
-        _animator.SetFloat("life", health);
-//        StartCoroutine(Idle());
-
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Building"))
@@ -47,10 +49,9 @@ public class WalkOnTrigger : MonoBehaviour
 //            _animator.SetTrigger(Buidling);
             StartCoroutine(Idle());
 //            _animator.SetTrigger(Buidling);
-
         }
 
-        if (other.gameObject.CompareTag("Tower"))
+        if (other.gameObject.CompareTag("Tower") || other.gameObject.CompareTag("Enemy"))
         {
             _animator.SetTrigger("Reverse");
             localScale = new Vector3(localScale.x*-1, localScale.y, localScale.z);
@@ -70,9 +71,5 @@ public class WalkOnTrigger : MonoBehaviour
         _animator.SetTrigger("building");
 
     }
-    private void Update() {
-        if(health<0){
-            Destroy(gameObject);
-        }
-    }
+
 }

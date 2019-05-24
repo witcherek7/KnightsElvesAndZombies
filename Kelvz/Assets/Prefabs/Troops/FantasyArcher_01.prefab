@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  attack_strength: 10
+  attack_strength: 15
   attack_range: 10
   attackDelay: 0.3
   time_to_attack: -1

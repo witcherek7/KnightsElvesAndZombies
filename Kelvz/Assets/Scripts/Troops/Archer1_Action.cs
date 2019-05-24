@@ -13,7 +13,6 @@ public class Archer1_Action : MonoBehaviour
     private GameObject self;
     private GameObject other_obj;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,53 +23,26 @@ public class Archer1_Action : MonoBehaviour
         time_to_attack -= Time.deltaTime;
         _animator.SetFloat("time_to_attack", time_to_attack);
     }
-    private void Destroy()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerStay2D(Collider2D other) 
-    {
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            _animator.SetTrigger("attack");
-        }
-
-        // tu przyjmowanie hita jakoś? MOże wywołanie funkcji, jeśli otrzymujemy atak od osoby, z którą się akurat bijemy?
-        // tu śmierć, 
-        // if (other wykonał na nas atak):
-        //      {_animator.SetFloat("life", other.strength)}
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        other_obj = other.gameObject;
-        
-    }
-
-    // Update is called once per frame
 
     public void TakeDamage(int amount){
         health -= amount;
         _animator.SetFloat("life", health);
+        Debug.Log("\tArcher life is "+health);
 
     }
-    // public void Attack(GameObject other_obj){
-    //     other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
-    // }
-
-    // public void EndAttack(GameObject other){
-    //     float distance = Vector3.Distance(other.transform.position, this.transform.position);
-    //     if(distance < attack_range && time_to_attack < 0){
-    //         other.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
-    //         time_to_attack = attackDelay;
-    //         Debug.Log("Archer attacked: -"+attack_strength);
-
-    //     }
-    // }
+    private void Destroy()
+    {
+        // Debug.Log("Archer is dead!");
+        Destroy(gameObject);
+    }
+    public void Attack(GameObject other_obj){
+        other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
+        // Debug.Log("Archer attacked: -"+attack_strength);
+    }
     public void Attack_trigger()
     {
         if (other_obj){
-            Debug.Log(other_obj.name.ToString());
+            // Debug.Log(other_obj.name.ToString());
             float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
             if(distance < attack_range ){
                 if (time_to_attack < 0){
@@ -81,8 +53,17 @@ public class Archer1_Action : MonoBehaviour
             }
         }
     }
-    public void Attack(GameObject other_obj){
-        other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
-        Debug.Log("Archer attacked: -"+attack_strength);
+        private void OnTriggerEnter2D(Collider2D other)
+    {
+        other_obj = other.gameObject;
+        
+    }
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        other_obj = other.gameObject;
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            _animator.SetTrigger("attack");
+        }
     }
 }

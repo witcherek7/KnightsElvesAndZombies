@@ -12,7 +12,7 @@ public class Hero_Action : MonoBehaviour
     //
     private Animator _animator;
     private GameObject other_obj;
-// /////////////////
+
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -23,24 +23,35 @@ public class Hero_Action : MonoBehaviour
         animation_time -= Time.deltaTime;
         _animator.SetFloat("attack_time", animation_time);
     }
- // /////////////////   
     private void TakeDamage(int amount){
         health -= amount;
         _animator.SetFloat("life", health);
-        Debug.Log("hero got atacked, health = "+health.ToString());
+        Debug.Log("Hero Life: "+health);
+        if(health<0){
+            Destroy(gameObject);
+        }
+        // Debug.Log("hero got atacked, health = "+health.ToString());
     }
-
     private void Destroy(){
         Destroy(gameObject);
     }
     public void Attack(GameObject other_obj){
         other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
-        Debug.Log("Hero attacked: -"+attack_strength);
+        // Debug.Log("Hero attacked: -"+attack_strength);
+    }
+
+    public void Attack_trigger(){
+        // Debug.Log("waiting for "+animation_time.ToString());
+        if(animation_time<0){
+            animation_time = 1.0f;
+            if(other_obj){
+                Attack(other_obj);
+            }
+        }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        other_obj = other.gameObject; // ???????
-        Debug.Log("hero loaded other obj as \n-----------"+other_obj.name.ToString());
+        other_obj = other.gameObject;
         // jeśli nie koliduje, to idzie w prawo, jeśli koliduje to:
         if (other.gameObject.CompareTag("Flag"))
         {
@@ -61,6 +72,8 @@ public class Hero_Action : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
+        other_obj = other.gameObject;
+
         if (other.gameObject.CompareTag("Enemy")){
             _animator.SetTrigger("hero_attack");
         }
@@ -69,17 +82,4 @@ public class Hero_Action : MonoBehaviour
             _animator.SetTrigger("hero_idle");
         }
     }
-    public void Attack_trigger()
-    {
-        // Debug.Log("waiting for "+animation_time.ToString());
-        if(animation_time<0){
-            animation_time = 1.0f;
-            if(other_obj){
-                Attack(other_obj);
-            }
-        }
-        // yield return new WaitForSeconds(animation_time);
-    }
-
-
 }

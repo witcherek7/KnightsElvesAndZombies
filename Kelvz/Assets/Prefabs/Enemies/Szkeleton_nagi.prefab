@@ -188,6 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3f03576075ab34b87808e2f8cfb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 60
   attack_strength: 10
+  attackDelay: 1
+  time_to_attack: 0
   attack_range: 1
+  other_obj: {fileID: 0}

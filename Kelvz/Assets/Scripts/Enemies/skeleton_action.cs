@@ -9,6 +9,8 @@ public class skeleton_action : MonoBehaviour
     //
     public int health = 100;
     public int attack_strength = 10;
+    [SerializeField] private float attackDelay = 1.0f;
+    [SerializeField] private float time_to_attack = 0f;
     //
 
     private Animator _animator;
@@ -16,71 +18,75 @@ public class skeleton_action : MonoBehaviour
     [SerializeField] private float attack_range = 5f;
     public GameObject other_obj;
 
-
-    private void TakeDamage(int amount){
-        health -= amount;
-        Debug.Log("--------------------------------SH: "+health);
-        _animator.SetFloat("life", health);
-    }
-
-    private void Destroy(){
-        Destroy(gameObject);
-    }
-    public void EndAttack(GameObject other_obj){
-        float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
-        if(distance < attack_range){
-            Debug.Log("szkieleton zadaje obrazenia dla: "+other_obj.name.ToString());
-            Debug.Log(other_obj.name);
-            other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
-        }
-    }
-// // // // //
     void Start()
     {
-        // localScale = transform.localScale;
         _animator = GetComponent<Animator>();
         _animator.SetFloat("life", health);
         
 //        StartCoroutine(Idle());
     }
+    private void Update() {
+        time_to_attack -= Time.deltaTime;
+        _animator.SetFloat("time_to_attack", time_to_attack);
+    }
 
-    private void OnTriggerStay2D(Collider2D other)
+
+    private void TakeDamage(int amount){
+        health -= amount;
+        _animator.SetFloat("life", health);
+        Debug.Log("\t\tSkeleton Life: "+health);
+
+    }
+
+    private void Destroy(){
+        Destroy(gameObject);
+    }
+
+    public void Attack_trigger()
     {
-        float distance = Vector3.Distance(other.transform.position, transform.position);
-
-        if(distance<=attack_range){
-        if (other.gameObject.CompareTag("Troop")){
-            _animator.SetTrigger("attack");
-        }
+        if (other_obj){
+            // Debug.Log(other_obj.name.ToString());
+            float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
+            if(distance < attack_range ){
+                if (time_to_attack < 0){
+                    Attack(other_obj);
+                    time_to_attack = attackDelay;
+                }
+            }
         }
     }
+    public void Attack(GameObject other_obj){
+        other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
+        // Debug.Log("Archer attacked: -"+attack_strength);
+    }
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
         other_obj = other.gameObject;
         float distance = Vector3.Distance(other.transform.position, transform.position);
-        if (distance<attack_range){
-        // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
-            if (other.gameObject.CompareTag("Troop"))
-            {
+        
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        other_obj = other.gameObject;
+        if (other_obj){
+            float distance = Vector3.Distance(other.transform.position, transform.position);
+            if (distance<attack_range){
+            // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
+                if (other.gameObject.CompareTag("Troop"))
+                {
+                    _animator.SetTrigger("attack");
+                }
+                if (other.gameObject.CompareTag("Creatures"))
+                {
                 _animator.SetTrigger("attack");
-            }
-            // wypadałoby dać tak, żeby odbierać informacje o \
-            // położeniu flagi i w razie co zrobić flip i wojo wraca
+                }
 
-            if (other.gameObject.CompareTag("Creatures"))
-            {
-            // jeśli wróg, to nakurwiaj
-            _animator.SetTrigger("attack");
-            // tu wyślij sygnał odbieranko życia
-            }
-
-            if (other.gameObject.CompareTag("Building"))
-            {
-            // jeśli wróg, to nakurwiaj
-            _animator.SetTrigger("attack");
-            // tu wyślij sygnał odbieranko życia
+                if (other.gameObject.CompareTag("Building"))
+                {
+                _animator.SetTrigger("attack");
+                }
             }
         }
-        
     }
 }
