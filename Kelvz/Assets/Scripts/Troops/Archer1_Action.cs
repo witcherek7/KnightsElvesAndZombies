@@ -6,6 +6,7 @@ public class Archer1_Action : MonoBehaviour
 {
     public int health = 100;
     public int attack_strength = 10;
+    [SerializeField] private int attack_range = 10;
     private Animator _animator;
     private GameObject self;
 
@@ -42,5 +43,11 @@ public class Archer1_Action : MonoBehaviour
     void Update()
     {
         
+    }
+    public void EndAttack(GameObject other){
+        float distance = Vector3.Distance(other.transform.position, this.transform.position);
+        if(distance < attack_range){
+            other.SendMessage("Damage", attack_strength, SendMessageOptions.DontRequireReceiver);
+        }
     }
 }
