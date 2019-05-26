@@ -15,7 +15,16 @@ public class BuildButton : MonoBehaviour
     private Color spriteOpacityFull = new Color (1f, 1f, 1f, 1f);
     private Color spriteOpacityHalf = new Color (1f, 1f, 1f, 0.5f);
     private bool amILast = true;
+    public GameObject EnemySpawn;
     
+
+    void MoveEnemySpawn()
+    {
+        if(gameObject.transform.position.x+70 < 248)
+            EnemySpawn.transform.position = new Vector2(gameObject.transform.position.x+70, gameObject.transform.transform.position.y);
+        else
+           EnemySpawn.transform.position = new Vector2(248f, gameObject.transform.transform.position.y);
+    }
 
     //private SpriteRenderer sprite;
     //public const string LAYER_NAME = "Buildings";
@@ -27,6 +36,7 @@ public class BuildButton : MonoBehaviour
         xPosition = GetComponent<Transform>().position.x;
         yPosition = GetComponent<Transform>().position.y;
         SpriteRenderer.color = spriteOpacityHalf;
+        MoveEnemySpawn();
     }
 
     void SpawnNewBuildButton()

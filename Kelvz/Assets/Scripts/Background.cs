@@ -10,7 +10,8 @@ public class Background : MonoBehaviour
     public GameObject timeText, Music_Day, Music_Night;
     private float elapsed, elapsedNight, elapsedDay;
     private int minutes = 0;
-    private int hours = 7;
+    public int hours = 7;
+    public int days = 0;
     private int dayTimeMinutes = 3*420;
     private float opacity = 1f;
 
@@ -47,6 +48,8 @@ public class Background : MonoBehaviour
 
         if (hours == 24)
         {
+            days += 1;
+            GameObject.Find("Player_Day_Text").GetComponent<Text>().text = "Day " + days;
             dayTimeMinutes = 0;
             hours = 0;
             minutes = 0;

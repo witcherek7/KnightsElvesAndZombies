@@ -22,7 +22,7 @@ public class Farm : MonoBehaviour
     public void ShowButton()
     {
         peasantButtonCopy = (GameObject)Instantiate(peasantButton, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y + 1.2f), Quaternion.identity);
-        peasantButtonCopy.transform.parent = gameObject.transform;
+        peasantButtonCopy.transform.parent = gameObject.transform.parent;
 
 
     }
