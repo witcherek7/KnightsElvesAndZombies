@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Messages : MonoBehaviour
 {
-    public Text text;
+    public GameObject player_messages;
+    private Text text;
     private float elapsed;
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<Text>();
+        text = player_messages.GetComponent<Text>();
     }
 
     // Update is called once per frame

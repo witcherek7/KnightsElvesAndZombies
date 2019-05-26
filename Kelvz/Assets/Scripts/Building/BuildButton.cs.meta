@@ -3,7 +3,16 @@ guid: 62358a8b2556cce409e5f97df515a6f4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deleteSprite: {instanceID: 0}
+  - buildSprite: {instanceID: 0}
+  - building: {instanceID: 0}
+  - confirmButton: {instanceID: 0}
+  - armoryButton: {instanceID: 0}
+  - farmButton: {instanceID: 0}
+  - towerButton: {instanceID: 0}
+  - buildButton: {fileID: 8443754286250861778, guid: 07a8d632284b0a0498eee8f55ff0351e,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
