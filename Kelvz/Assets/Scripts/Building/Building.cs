@@ -77,6 +77,17 @@ public class Building : MonoBehaviour
 
         }
     }
+    private void TakeDamage(int amount){
+        health -= amount;
+        if (health <= 0){
+            Destroy();
+        }
+    }
+
+    private void Destroy(){
+        Destroy(gameObject);
+    }
+
 
     void Update()
     {

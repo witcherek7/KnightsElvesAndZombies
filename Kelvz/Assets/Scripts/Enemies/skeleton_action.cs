@@ -16,6 +16,7 @@ public class skeleton_action : MonoBehaviour
     private Animator _animator;
     private GameObject self;
     [SerializeField] private float attack_range = 5f;
+    [SerializeField] private float building_size = 10f;
     public GameObject other_obj;
 
     void Start()
@@ -44,16 +45,37 @@ public class skeleton_action : MonoBehaviour
 
     public void Attack_trigger()
     {
-        if (other_obj){
+        if (other_obj)
+        {
             // Debug.Log(other_obj.name.ToString());
             float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
-            if(distance < attack_range ){
-                if (time_to_attack < 0){
-                    Attack(other_obj);
-                    time_to_attack = attackDelay;
+            
+            if (other_obj.CompareTag("Troop"))
+            {
+                if(distance < attack_range )
+                {
+                    if (time_to_attack < 0)
+                    {
+                        Attack(other_obj);
+                        time_to_attack = attackDelay;
+                    }
                 }
             }
+        
+            else
+            {
+                if(distance < attack_range + building_size )
+                {
+                    if (time_to_attack < 0)
+                    {
+                        Attack(other_obj);
+                        time_to_attack = attackDelay;
+                    }
+                        
+                }      
+            }
         }
+
     }
     public void Attack(GameObject other_obj){
         other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
