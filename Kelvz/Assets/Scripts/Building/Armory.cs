@@ -14,8 +14,8 @@ public class Armory : MonoBehaviour
     {
         warriorButtonCopy = (GameObject)Instantiate(warriorButton, new Vector2(gameObject.transform.position.x - 0.8f, gameObject.transform.position.y + 1.2f), Quaternion.identity);
         archerButtonCopy = (GameObject)Instantiate(archerButton, new Vector2(gameObject.transform.position.x + 0.8f, gameObject.transform.position.y + 1.2f), Quaternion.identity);
-        warriorButtonCopy.transform.parent = gameObject.transform;
-        archerButtonCopy.transform.parent = gameObject.transform;
+        warriorButtonCopy.transform.parent = gameObject.transform.parent;
+        archerButtonCopy.transform.parent = gameObject.transform.parent;
         // canvasTextCopy1 = (GameObject)Instantiate(canvasText, new Vector2(warriorButtonCopy.transform.position.x, gameObject.transform.position.y + 1.7f), Quaternion.identity);
         // canvasTextCopy2 = (GameObject)Instantiate(canvasText, new Vector2(archerButtonCopy.transform.position.x, gameObject.transform.position.y + 1.7f), Quaternion.identity);
         // canvasTextCopy1.transform.parent = gameObject.transform;

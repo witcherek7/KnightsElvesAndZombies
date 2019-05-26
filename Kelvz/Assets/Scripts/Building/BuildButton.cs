@@ -14,6 +14,7 @@ public class BuildButton : MonoBehaviour
     private bool buildClicked = false, deleteClicked = false;
     private Color spriteOpacityFull = new Color (1f, 1f, 1f, 1f);
     private Color spriteOpacityHalf = new Color (1f, 1f, 1f, 0.5f);
+    private bool amILast = true;
     
 
     //private SpriteRenderer sprite;
@@ -28,8 +29,18 @@ public class BuildButton : MonoBehaviour
         SpriteRenderer.color = spriteOpacityHalf;
     }
 
+    void SpawnNewBuildButton()
+    {
+        Instantiate(GameObject.Find("build_button_template"), new Vector2(xPosition + 3f, yPosition), Quaternion.identity);
+    }
+
     public void ChangeSpriteToDelete()
     {
+        if(amILast == true)
+        {
+            SpawnNewBuildButton();
+            amILast = false;
+        }
         SpriteRenderer.sprite = deleteSprite;
         deleteMode = true;
         deleteClicked = false;
@@ -47,11 +58,15 @@ public class BuildButton : MonoBehaviour
         Destroy(armoryButtonCopy);
         Destroy(towerButtonCopy);
         Destroy(farmButtonCopy);
+
     }
 
     public void ConfirmAction()
         {
             Destroy(building);
+                    foreach (Transform child in gameObject.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
             ChangeSpriteToBuild();
         }
 

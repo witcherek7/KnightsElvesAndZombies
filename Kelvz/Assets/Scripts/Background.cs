@@ -7,11 +7,11 @@ public class Background : MonoBehaviour
 {
     public GameObject dayCloud;
     public GameObject nightCloud;
-    public GameObject timeText;
+    public GameObject timeText, Music_Day, Music_Night;
     private float elapsed, elapsedNight, elapsedDay;
     private int minutes = 0;
     private int hours = 7;
-    private int dayTimeMinutes = 420;
+    private int dayTimeMinutes = 3*420;
     private float opacity = 1f;
 
     // Start is called before the first frame update
@@ -56,14 +56,18 @@ public class Background : MonoBehaviour
         {
             if (opacity > 0)
             {
-                Debug.Log("Getting darker");
+                //Debug.Log("Getting darker");
                 elapsedDay += Time.deltaTime;
                 if (elapsedDay >= 0.5f)
                 {
                     elapsedDay = elapsedDay % 0.5f;
                     opacity = opacity - 0.02f;
 
+                    Music_Day.GetComponent<AudioSource>().volume = opacity;
+                    Music_Night.GetComponent<AudioSource>().volume = 1 - opacity;
+                    
                     dayCloud.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity);
+
 
                 }
             }
@@ -72,10 +76,13 @@ public class Background : MonoBehaviour
         {
             if (opacity < 1)
             {
-                Debug.Log("Getting lighter");
+                //Debug.Log("Getting lighter");
                 elapsedDay += Time.deltaTime;
                 if (elapsedDay >= 0.5f)
                 {
+
+                    Music_Day.GetComponent<AudioSource>().volume = opacity;
+                    Music_Night.GetComponent<AudioSource>().volume = 1 - opacity;
                     elapsedDay = elapsedDay % 0.5f;
                     opacity = opacity + 0.02f;
 

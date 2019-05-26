@@ -136,6 +136,7 @@ public class BuyPeasantButton : MonoBehaviour
 
     private void OnMouseOver()
     {
+        Debug.Log("MOUSE IS OVER!");
         SpriteRenderer.color = spriteOpacityFull;
     }
     private void OnMouseExit()

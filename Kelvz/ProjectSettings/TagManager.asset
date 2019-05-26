@@ -54,14 +54,14 @@ TagManager:
   - name: Clouds
     uniqueID: 1171887539
     locked: 0
+  - name: Buildings
+    uniqueID: 1645145859
+    locked: 0
   - name: background
     uniqueID: 505945697
     locked: 0
   - name: City_object
     uniqueID: 1144157229
-    locked: 0
-  - name: Buildings
-    uniqueID: 1645145859
     locked: 0
   - name: Creatures
     uniqueID: 1604088309
