@@ -14,6 +14,7 @@ TagManager:
   - UI
   - Troop
   - Enemy
+  - Flag
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Background
   - Creatures
   - Flag
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -71,4 +72,7 @@ TagManager:
     locked: 0
   - name: Flag
     uniqueID: 2776427091
+    locked: 0
+  - name: Enemies
+    uniqueID: 3988250687
     locked: 0
