@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3249643020284618835}
   - component: {fileID: 7288576193482490508}
   - component: {fileID: 3304473789264187700}
+  - component: {fileID: 9117834952806863317}
   - component: {fileID: 5987455505586295870}
   - component: {fileID: 4447929439725795917}
   m_Layer: 11
@@ -123,6 +124,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9117834952806863317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249643020284618845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c008e43870e8f439d3cc9f6e81b679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textName: WarriorsCount
 --- !u!61 &5987455505586295870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,3 +178,4 @@ MonoBehaviour:
   health: 100
   attack_strength: 10
   animation_time: 1
+  flaga: {fileID: 0}

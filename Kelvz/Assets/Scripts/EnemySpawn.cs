@@ -7,6 +7,7 @@ public class EnemySpawn : MonoBehaviour
 
 
     public GameObject enemy01, enemy02;
+    public int multiplier;
     private int enemy01count = 1, enemy02count = 1;
     private bool isProducing = false;
     private int days;
@@ -47,7 +48,7 @@ public class EnemySpawn : MonoBehaviour
     {
         while (isProducing)
         {
-            yield return new WaitForSeconds(5f-days/10);
+            yield return new WaitForSeconds(5f-days/10/multiplier);
             Instantiate(enemy01, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         }
     }
@@ -55,7 +56,7 @@ public class EnemySpawn : MonoBehaviour
     {
         while (isProducing)
         {
-            yield return new WaitForSeconds(20f-days/10);
+            yield return new WaitForSeconds(20f-days/10/multiplier);
             Instantiate(enemy02, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 836831646}
   - component: {fileID: 836831647}
   - component: {fileID: 476322426109775159}
+  - component: {fileID: 8788621006133670906}
   - component: {fileID: 4961219444062704002}
   - component: {fileID: 1238221807809622357}
   - component: {fileID: 3563293482512396081}
@@ -178,6 +179,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.47}
   m_EdgeRadius: 0
+--- !u!114 &8788621006133670906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836831643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c008e43870e8f439d3cc9f6e81b679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textName: VillagersCount
 --- !u!114 &4961219444062704002
 MonoBehaviour:
   m_ObjectHideFlags: 0

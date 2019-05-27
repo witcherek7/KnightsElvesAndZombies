@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5301462873593899991}
   - component: {fileID: 6213397365410465319}
   - component: {fileID: 5070531742341196166}
+  - component: {fileID: 609937412370019374}
   m_Layer: 11
   m_Name: "W\u0142\xF3czykij_ruch"
   m_TagString: Creatures
@@ -217,3 +218,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfGoldPerFiveSeconds: 1
+--- !u!114 &609937412370019374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200201503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c008e43870e8f439d3cc9f6e81b679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textName: VillagersCount
