@@ -59,6 +59,10 @@ public class WalkOnTrigger : MonoBehaviour
                 transform.localScale = localScale;
             }
         }
+        else if (other.gameObject.CompareTag("end_of_map")){
+            localScale = new Vector3(localScale.x*-1, localScale.y, localScale.z);
+            transform.localScale = localScale;
+        }
     }
 
     IEnumerator Idle()

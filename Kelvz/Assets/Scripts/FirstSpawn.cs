@@ -10,13 +10,17 @@ public class FirstSpawn : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void TakeDamage(int amount){
+        health -= amount;
         if(health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 
     /// <summary>

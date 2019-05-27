@@ -18,6 +18,7 @@ TagManager:
   - building_trigger
   - tower_trigger
   - flag_trigger
+  - end_of_map
   layers:
   - Default
   - TransparentFX

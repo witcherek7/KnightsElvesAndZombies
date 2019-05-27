@@ -96,15 +96,15 @@ public class Hero_Action : MonoBehaviour
         // wypadałoby dać tak, żeby odbierać informacje o \
         // położeniu flagi i w razie co zrobić flip i wojo wraca
 
-        if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
            // jeśli wróg, to nakurwiaj
            _animator.SetTrigger("hero_attack");
         }
 
-        if (other.gameObject.CompareTag("Flag")){
-            _animator.SetTrigger("hero_idle");
-        }
+        // else if (other.gameObject.CompareTag("Flag")){
+        //     _animator.SetTrigger("hero_idle");
+        // }
     }
     private void OnTriggerStay2D(Collider2D other)
     {

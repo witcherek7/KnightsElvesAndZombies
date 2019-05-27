@@ -95,5 +95,14 @@ public class Archer1_Action : MonoBehaviour
         {
             _animator.SetTrigger("attack");
         }
+        else if (other.gameObject.CompareTag("flag_trigger")){
+            _animator.SetBool("isFlag", true);
+        }
+        else if (!other.gameObject.CompareTag("flag_trigger")){
+            _animator.SetBool("isFlag", false);
+        }
     }
+    // private void OnTriggerExit2D(Collider2D other) {
+    //     _animator.SetTrigger("walk");
+    // }
 }
