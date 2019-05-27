@@ -15,6 +15,9 @@ TagManager:
   - Troop
   - Enemy
   - Flag
+  - building_trigger
+  - tower_trigger
+  - flag_trigger
   layers:
   - Default
   - TransparentFX
@@ -30,9 +33,9 @@ TagManager:
   - Creatures
   - Flag
   - Enemies
-  - 
-  - 
-  - 
+  - building_trigger
+  - tower_trigger
+  - flag_trigger
   - 
   - 
   - 

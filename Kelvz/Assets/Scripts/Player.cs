@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Text goldText;
     public GameObject flag;
     private GameObject flagCopy;
+    private GameObject[] creatures;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,15 @@ public class Player : MonoBehaviour
         peasantList.Add(peasant);
     }
     // Update is called once per frame
+    void sendCoordinates(Vector3 flag_coordinates){
+        Vector3 coordinates = this.transform.position;
+        // find creatures to send info:
+        creatures = GameObject.FindGameObjectsWithTag("Troop");
+        foreach (GameObject creature in creatures){
+            Debug.Log("Sending direction to: "+ flag_coordinates);
+            creature.SendMessage("setDirection", flag_coordinates, SendMessageOptions.DontRequireReceiver);
+        }
+    }
     void Update()
     {
         if(Input.GetMouseButtonDown(1))
@@ -44,6 +54,9 @@ public class Player : MonoBehaviour
             flagCopy = (GameObject)Instantiate(flag, cursor, Quaternion.identity);
             flagCopy.name = "flag";
             flagCopy.transform.parent = transform;
+            Vector3 flag_coordinates = flagCopy.transform.position;
+            sendCoordinates(flag_coordinates);
+
         }
     }
 

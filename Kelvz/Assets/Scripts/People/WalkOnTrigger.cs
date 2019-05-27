@@ -44,14 +44,14 @@ public class WalkOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Building"))
+        if (other.gameObject.CompareTag("building_trigger"))
         {
 //            _animator.SetTrigger(Buidling);
             StartCoroutine(Idle());
 //            _animator.SetTrigger(Buidling);
         }
 
-        if (other.gameObject.CompareTag("Tower") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("tower_trigger") || other.gameObject.CompareTag("Enemy"))
         {
             _animator.SetTrigger("Reverse");
             localScale = new Vector3(localScale.x*-1, localScale.y, localScale.z);

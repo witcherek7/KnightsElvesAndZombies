@@ -23,6 +23,36 @@ public class Archer1_Action : MonoBehaviour
         time_to_attack -= Time.deltaTime;
         _animator.SetFloat("time_to_attack", time_to_attack);
     }
+    void setDirection(Vector3 flag_pos){
+        float myPosition = this.transform.position.x;
+        float deltaPos = flag_pos.x - this.transform.position.x; 
+        // Debug.Log("received position x of flag: "+flag_pos.x);
+        // Debug.Log("my position x: "+myPosition);
+        // Debug.Log("deltaPos = "+deltaPos);
+        
+        if (gameObject.transform.localScale.x > 0){
+            // Debug.Log("patrzy w prawo");
+            if(deltaPos < 0){
+                // Debug.Log("flaga po lewej, obracam w lewo");
+                gameObject.transform.localScale *= new Vector2(-1,1);
+            }
+            else {
+                // Debug.Log("flaga po prawej");
+            }
+        }
+        else if (gameObject.transform.localScale.x < 0){
+            // Debug.Log("patrzy w lewo");
+
+            if(deltaPos > 0){
+                // Debug.Log("flaga po prawej, obracam w prawo");
+                gameObject.transform.localScale *= new Vector2(-1,1);
+            }
+            else {
+                // Debug.Log("flaga po lewej");
+
+            }
+        }
+    }
 
     public void TakeDamage(int amount){
         health -= amount;

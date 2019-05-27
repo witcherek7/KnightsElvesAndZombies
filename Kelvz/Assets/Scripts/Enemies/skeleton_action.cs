@@ -94,17 +94,18 @@ public class skeleton_action : MonoBehaviour
         if (other_obj){
             float distance = Vector3.Distance(other.transform.position, transform.position);
             if (distance<attack_range){
+                var tag = other.gameObject.tag;
             // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
                 if (other.gameObject.CompareTag("Troop"))
                 {
                     _animator.SetTrigger("attack");
                 }
-                if (other.gameObject.CompareTag("Creatures"))
+                else if (other.gameObject.CompareTag("Creatures"))
                 {
                 _animator.SetTrigger("attack");
                 }
 
-                if (other.gameObject.CompareTag("Building"))
+                else if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("building_trigger"))
                 {
                 _animator.SetTrigger("attack");
                 }

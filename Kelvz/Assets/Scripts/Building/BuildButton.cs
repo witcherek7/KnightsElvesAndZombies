@@ -15,7 +15,7 @@ public class BuildButton : MonoBehaviour
     private Color spriteOpacityFull = new Color (1f, 1f, 1f, 1f);
     private Color spriteOpacityHalf = new Color (1f, 1f, 1f, 0.5f);
     private bool amILast = true;
-    public GameObject EnemySpawn;
+    public GameObject EnemySpawn; // co to robi? wyrzuca błąd
     
 
     void MoveEnemySpawn()
