@@ -93,18 +93,11 @@ public class Hero_Action : MonoBehaviour
         {
             _animator.SetTrigger("hero_idle");
         }
-        // wypadałoby dać tak, żeby odbierać informacje o \
-        // położeniu flagi i w razie co zrobić flip i wojo wraca
 
         else if (other.gameObject.CompareTag("Enemy"))
         {
-           // jeśli wróg, to nakurwiaj
            _animator.SetTrigger("hero_attack");
         }
-
-        // else if (other.gameObject.CompareTag("Flag")){
-        //     _animator.SetTrigger("hero_idle");
-        // }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -113,11 +106,11 @@ public class Hero_Action : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")){
             _animator.SetTrigger("hero_attack");
         }
-        if (other.gameObject.CompareTag("Flag"))
+        else if (other.gameObject.CompareTag("Flag"))
         {
             _animator.SetTrigger("hero_idle");
         }
-        // else if (!other.gameObject.CompareTag("flat_trigger")) {
+        // else if (!other.gameObject.CompareTag("flag_trigger")) {
         //     _animator.SetTrigger("hero_run");
         // }
     }
