@@ -47,32 +47,52 @@ public class skeleton_action : MonoBehaviour
     {
         if (other_obj)
         {
-            // Debug.Log(other_obj.name.ToString());
             float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
-            
-            if (other_obj.CompareTag("Troop"))
+
+            // Debug.Log(other_obj.name.ToString());
+            if (other_obj.CompareTag("Troop") || other_obj.CompareTag("Creatures"))
             {
+
+                Debug.Log("szkieleton napotkał ziomeczka");
                 if(distance < attack_range )
                 {
                     if (time_to_attack < 0)
                     {
+                        Debug.Log("szkieleton atakuje ziomeczka");
                         Attack(other_obj);
                         time_to_attack = attackDelay;
                     }
                 }
             }
         
-            else
+            else if (other_obj.CompareTag("building_trigger") || other_obj.CompareTag("tower_trigger"))
             {
+                var obj = other_obj.transform.parent.gameObject;
+                Debug.Log("parent name: "+obj.name);
+                Debug.Log("parent position: "+obj.transform.position.x);
+                distance = Vector3.Distance(other_obj.transform.parent.gameObject.transform.position, this.transform.position);
                 if(distance < attack_range + building_size )
                 {
+                    Debug.Log("szkieleton napotkał budynek, dystans mniejszy od zasięgu: " + distance);
                     if (time_to_attack < 0)
                     {
-                        Attack(other_obj);
+                        Debug.Log("szkieleton atakuje budynek");
+                        Attack(obj);
                         time_to_attack = attackDelay;
                     }
                         
                 }      
+            }
+
+            else if (other_obj.CompareTag("Building") || other_obj.CompareTag("Tower")) {
+                distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
+                if (distance < attack_range+building_size){
+                    Debug.Log("szkieleton napotkał budynek BUILDING, dystans mnieszy od zasięgu "+distance);
+                    if (time_to_attack < 0){
+                        Debug.Log("szkieleton atakuje BUDYNEK");
+                        Attack(other_obj);
+                    }
+                }
             }
         }
 
@@ -91,6 +111,7 @@ public class skeleton_action : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         other_obj = other.gameObject;
+        // Debug.Log("szkieleton striggerowany przez obiekt "+ other_obj.name.ToString());
         if (other_obj){
             float distance = Vector3.Distance(other.transform.position, transform.position);
             if (distance<attack_range){
@@ -105,7 +126,7 @@ public class skeleton_action : MonoBehaviour
                 _animator.SetTrigger("attack");
                 }
 
-                else if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("building_trigger"))
+                else if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("building_trigger") || other.gameObject.CompareTag("tower_trigger"))
                 {
                 _animator.SetTrigger("attack");
                 }

@@ -36,7 +36,9 @@ public class BuildButton : MonoBehaviour
         xPosition = GetComponent<Transform>().position.x;
         yPosition = GetComponent<Transform>().position.y;
         SpriteRenderer.color = spriteOpacityHalf;
-        MoveEnemySpawn();
+        if(EnemySpawn) {
+            MoveEnemySpawn();
+        }
     }
 
     void SpawnNewBuildButton()

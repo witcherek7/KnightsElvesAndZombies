@@ -192,5 +192,6 @@ MonoBehaviour:
   attack_strength: 10
   attackDelay: 1
   time_to_attack: 0
-  attack_range: 1
+  attack_range: 10
+  building_size: 10
   other_obj: {fileID: 0}
