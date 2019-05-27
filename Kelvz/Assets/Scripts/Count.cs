@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Count : MonoBehaviour
 {
     public int howMany = 0;
+    public int inTotal = 0;
     private string myText;
     // Start is called before the first frame update
     void Start()
