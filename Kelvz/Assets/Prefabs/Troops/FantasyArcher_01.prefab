@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9500000}
   - component: {fileID: 1398573005825318463}
   - component: {fileID: 9221303079720455766}
+  - component: {fileID: 7205345500271961792}
   - component: {fileID: 6893721113784316801}
   m_Layer: 11
   m_Name: FantasyArcher_01
@@ -154,6 +155,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8836424, y: 3.2290895}
   m_EdgeRadius: 0
+--- !u!114 &7205345500271961792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c008e43870e8f439d3cc9f6e81b679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textName: ArchersCount
 --- !u!114 &6893721113784316801
 MonoBehaviour:
   m_ObjectHideFlags: 0
