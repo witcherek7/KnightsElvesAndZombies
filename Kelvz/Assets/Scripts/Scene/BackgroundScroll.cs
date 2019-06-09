@@ -6,15 +6,15 @@ public class BackgroundScroll : MonoBehaviour
 {
 
     [SerializeField] private float backgroundSize;
-    [SerializeField] private float parallaxSpeed;
 
     private float lastCameraX;
 
     private Transform cameraTransform;
     private Transform[] layers;
-    private float viewZone = 10;
+    [SerializeField] private float viewZone = 10;
     private int leftIndex;
     private int rightIndex;
+    [SerializeField] private float parallaxSpeed = 1f;
 
     private void Start()
     {
