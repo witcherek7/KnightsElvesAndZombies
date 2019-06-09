@@ -16,11 +16,14 @@ public class skeleton_action : MonoBehaviour
     private Animator _animator;
     private GameObject self;
     [SerializeField] private float attack_range = 5f;
+    [SerializeField] private float troop_attack_range = 1f;
     [SerializeField] private float building_size = 10f;
+    private Vector3 localScale;
     public GameObject other_obj;
 
     void Start()
     {
+        localScale = transform.localScale;
         _animator = GetComponent<Animator>();
         _animator.SetFloat("life", health);
         Debug.Log("Starting...");
@@ -112,27 +115,30 @@ public class skeleton_action : MonoBehaviour
     {
         other_obj = other.gameObject;
         float distance = Vector3.Distance(other.transform.position, transform.position);
-        Debug.Log("OnTriggerEnter2D, the object is: "+other_obj.name.ToString()+"\tThe distance: "+distance.ToString());
+        // Debug.Log("OnTriggerEnter2D, the object is: "+other_obj.name.ToString()+"\tThe distance: "+distance.ToString());
 
     }
     private void OnTriggerStay2D(Collider2D other)
     {
         other_obj = other.gameObject;
 
-        Debug.Log("OnTriggerStay2D, object: "+other_obj.name.ToString());
 
-        if (other_obj && !other_obj.CompareTag("Background")){
+        if (other_obj && !other_obj.CompareTag("Background") && !other_obj.CompareTag("Flag")){
+            Debug.Log("OnTriggerStay2D, object: "+other_obj.name.ToString());
             float distance = Vector3.Distance(other.transform.position, transform.position);
             Debug.Log("\t--- <otS> distance is "+distance);
+            Debug.Log("\t it is in attack range");
+            var tag = other.gameObject.tag;
             if (distance<attack_range){
-                Debug.Log("\t it is in attack range");
-                var tag = other.gameObject.tag;
-            // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
-                if (other.gameObject.CompareTag("Troop"))
-                {
-                    Debug.Log("\t\t the Tag is Troop, triggering attack");
-                    _animator.SetTrigger("attack");
+                Debug.Log("\t\t\tin a Troop Range");
+                if (other.gameObject.CompareTag("Troop")){
+                    if(distance<troop_attack_range){
+                        Debug.Log("\t\t the Tag is Troop, triggering attack");
+                        _animator.SetTrigger("attack");
+                    }
                 }
+
+            // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
                 else if (other.gameObject.CompareTag("Creatures"))
                 {
                     Debug.Log("\t\t the Tag is Creatures, triggering attack");
@@ -143,6 +149,10 @@ public class skeleton_action : MonoBehaviour
                 {
                     Debug.Log("\t\t the Tag is "+tag.ToString()+". Triggering attack");
                     _animator.SetTrigger("attack");
+                }
+                else if (other.gameObject.CompareTag("end_of_map")){
+                    localScale = new Vector3(localScale.x*-1, localScale.y, localScale.z);
+                    transform.localScale = localScale;
                 }
             }
         }
