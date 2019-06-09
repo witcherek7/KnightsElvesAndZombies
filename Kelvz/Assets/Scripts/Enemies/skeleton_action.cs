@@ -23,7 +23,7 @@ public class skeleton_action : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _animator.SetFloat("life", health);
-        
+        Debug.Log("Starting...");
 //        StartCoroutine(Idle());
     }
     private void Update() {
@@ -40,24 +40,28 @@ public class skeleton_action : MonoBehaviour
     }
 
     private void Destroy(){
+        Debug.Log("Destroying");
         Destroy(gameObject);
     }
 
     public void Attack_trigger()
     {
-        if (other_obj)
+        if (other_obj && !other_obj.CompareTag("Background"))
         {
             float distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
+            Debug.Log("--- Attack triggered --- \n --- --- the distance is "+distance.ToString());
 
             // Debug.Log(other_obj.name.ToString());
             if (other_obj.CompareTag("Troop") || other_obj.CompareTag("Creatures"))
             {
 
-                // Debug.Log("szkieleton napotkał ziomeczka");
+                Debug.Log("Skeleton found TROOP or CREATURE");
                 if(distance < attack_range )
                 {
+                    Debug.Log("\t--- ...It is in attack range ---");
                     if (time_to_attack < 0)
                     {
+                        Debug.Log("\t--- ...Skeleton can now attack ---");
                         // Debug.Log("szkieleton atakuje ziomeczka");
                         Attack(other_obj);
                         time_to_attack = attackDelay;
@@ -68,15 +72,17 @@ public class skeleton_action : MonoBehaviour
             else if (other_obj.CompareTag("building_trigger") || other_obj.CompareTag("tower_trigger"))
             {
                 var obj = other_obj.transform.parent.gameObject;
+                Debug.Log("Skeleton found BUILDING or TOWER trigger. Object name: "+obj.name.ToString());
+
                 // Debug.Log("parent name: "+obj.name);
                 // Debug.Log("parent position: "+obj.transform.position.x);
                 // distance = Vector3.Distance(other_obj.transform.parent.gameObject.transform.position, this.transform.position);
                 // if(distance < attack_range + building_size )
                 // {
-                    Debug.Log("szkieleton napotkał budynek, dystans mniejszy od zasięgu: " + distance);
+                    Debug.Log("\t--- ...trigger is in distance: " + distance.ToString());
                     if (time_to_attack < 0)
                     {
-                        Debug.Log("szkieleton atakuje budynek");
+                        Debug.Log("\t--- ...skeleton can now attack the object: "+obj.name.ToString());
                         Attack(obj);
                         time_to_attack = attackDelay;
                     }
@@ -87,9 +93,9 @@ public class skeleton_action : MonoBehaviour
             else if (other_obj.CompareTag("Building") || other_obj.CompareTag("Tower")) {
                 // distance = Vector3.Distance(other_obj.transform.position, this.transform.position);
                 // if (distance < attack_range+building_size){
-                    Debug.Log("szkieleton napotkał budynek BUILDING, dystans mnieszy od zasięgu "+distance);
+                    Debug.Log("Skeleton was triggered by BUILDING (not the trigger inside ), the distance is: "+distance);
                     if (time_to_attack < 0){
-                        Debug.Log("szkieleton atakuje BUDYNEK");
+                        Debug.Log("\t--- ...Skeleton can now attak BUDYNEK: "+other_obj.name.ToString());
                         Attack(other_obj);
                     }
                 // }
@@ -106,29 +112,37 @@ public class skeleton_action : MonoBehaviour
     {
         other_obj = other.gameObject;
         float distance = Vector3.Distance(other.transform.position, transform.position);
-        
+        Debug.Log("OnTriggerEnter2D, the object is: "+other_obj.name.ToString()+"\tThe distance: "+distance.ToString());
+
     }
     private void OnTriggerStay2D(Collider2D other)
     {
         other_obj = other.gameObject;
-        // Debug.Log("szkieleton striggerowany przez obiekt "+ other_obj.name.ToString());
-        if (other_obj){
+
+        Debug.Log("OnTriggerStay2D, object: "+other_obj.name.ToString());
+
+        if (other_obj && !other_obj.CompareTag("Background")){
             float distance = Vector3.Distance(other.transform.position, transform.position);
+            Debug.Log("\t--- <otS> distance is "+distance);
             if (distance<attack_range){
+                Debug.Log("\t it is in attack range");
                 var tag = other.gameObject.tag;
             // jeśli nie koliduje, to idzie w lewo, jeśli koliduje to:
                 if (other.gameObject.CompareTag("Troop"))
                 {
+                    Debug.Log("\t\t the Tag is Troop, triggering attack");
                     _animator.SetTrigger("attack");
                 }
                 else if (other.gameObject.CompareTag("Creatures"))
                 {
-                _animator.SetTrigger("attack");
+                    Debug.Log("\t\t the Tag is Creatures, triggering attack");
+                    _animator.SetTrigger("attack");
                 }
 
                 else if (other.gameObject.CompareTag("Building") || other.gameObject.CompareTag("building_trigger") || other.gameObject.CompareTag("tower_trigger"))
                 {
-                _animator.SetTrigger("attack");
+                    Debug.Log("\t\t the Tag is "+tag.ToString()+". Triggering attack");
+                    _animator.SetTrigger("attack");
                 }
             }
         }
