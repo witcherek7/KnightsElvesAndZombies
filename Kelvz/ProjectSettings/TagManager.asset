@@ -19,6 +19,7 @@ TagManager:
   - tower_trigger
   - flag_trigger
   - end_of_map
+  - GoldenBall
   layers:
   - Default
   - TransparentFX
@@ -59,14 +60,17 @@ TagManager:
   - name: Clouds
     uniqueID: 1171887539
     locked: 0
-  - name: Buildings
-    uniqueID: 1645145859
-    locked: 0
   - name: background
     uniqueID: 505945697
     locked: 0
+  - name: Buildings
+    uniqueID: 1645145859
+    locked: 0
   - name: City_object
     uniqueID: 1144157229
+    locked: 0
+  - name: Enemies
+    uniqueID: 3988250687
     locked: 0
   - name: Creatures
     uniqueID: 1604088309
@@ -76,7 +80,4 @@ TagManager:
     locked: 0
   - name: Flag
     uniqueID: 2776427091
-    locked: 0
-  - name: Enemies
-    uniqueID: 3988250687
     locked: 0
