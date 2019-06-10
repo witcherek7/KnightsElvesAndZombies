@@ -54,6 +54,10 @@ public class MoveCamera : MonoBehaviour
         // }
 
         
-
+    if(Input.GetKey(KeyCode.Escape))
+    {
+        Application.Quit();
     }
+    }
+    
 }
