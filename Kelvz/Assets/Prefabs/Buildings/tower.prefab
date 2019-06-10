@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 1912205667096743471}
   - component: {fileID: 2175494552343314283}
   - component: {fileID: 6917769008386939701}
+  - component: {fileID: 4934536320532975633}
   - component: {fileID: 5291841947118636374}
   m_Layer: 8
   m_Name: tower
@@ -307,7 +308,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1645145859
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6776597cd7211dd4daa0e60d4efae577, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -386,6 +387,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &4934536320532975633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912205667096743466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280189b9429e30a4abc73d243a08f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5291841947118636374
 BoxCollider2D:
   m_ObjectHideFlags: 0

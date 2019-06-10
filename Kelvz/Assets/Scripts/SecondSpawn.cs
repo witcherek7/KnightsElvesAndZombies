@@ -11,7 +11,7 @@ public class SecondSpawn : MonoBehaviour
     {
         if (canvas){
             canvas.SetActive(true);
-            GameObject.Find("KilledText").GetComponent<Text>().text = GameObject.Find("EnemiesCount").GetComponent<Count>().inTotal + " skeletors killed.";
+            GameObject.Find("KilledText").GetComponent<Text>().text = GameObject.Find("EnemiesCount").GetComponent<Count>().inTotal + " skeletors in total.";
         }
     }
 }

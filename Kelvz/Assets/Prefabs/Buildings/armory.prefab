@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 8372839630674720981}
   - component: {fileID: 8372839630674720979}
   - component: {fileID: 8372839630674720976}
+  - component: {fileID: 7096029280329565858}
   - component: {fileID: 6523028887326748845}
   - component: {fileID: 3827447155402774853}
   - component: {fileID: 3069095231448382502}
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1645145859
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2918541d5830b40ff9298093228c04f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,6 +181,18 @@ MonoBehaviour:
     type: 3}
   canvasText: {fileID: 7729564107217996194, guid: 0aaef8a47abf7ca4b964693588cdfc9d,
     type: 3}
+--- !u!114 &7096029280329565858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372839630674720980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280189b9429e30a4abc73d243a08f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &6523028887326748845
 BoxCollider2D:
   m_ObjectHideFlags: 0

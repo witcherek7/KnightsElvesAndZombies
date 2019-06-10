@@ -15,6 +15,17 @@ public class BuildButton : MonoBehaviour
     private Color spriteOpacityFull = new Color (1f, 1f, 1f, 1f);
     private Color spriteOpacityHalf = new Color (1f, 1f, 1f, 0.5f);
     private bool amILast = true;
+
+    public void buildingDestroyed()
+    {
+        foreach (Transform child in gameObject.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        ChangeSpriteToBuild();
+        buildClicked = false;
+        deleteClicked = false;
+        deleteMode = false;
+    }
     //public GameObject EnemySpawn; // co to robi? wyrzuca błąd
     
 

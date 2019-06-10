@@ -33,6 +33,7 @@ public class Building : MonoBehaviour
         progressTextCopy = progressCanvasCopy.transform.GetChild(0).gameObject;
         text = progressTextCopy.GetComponent<Text>();
         text.text = 0 + "%";
+        musicDestroy = GameObject.Find("Music_Destroy").gameObject;
 
     }
 
@@ -104,18 +105,8 @@ public class Building : MonoBehaviour
 
     void OnDestroy()
     {
-        //StartCoroutine(destroySoundPlay());
-
-        musicDestroyCopy = (GameObject) Instantiate(musicDestroy, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
-        musicDestroyCopy.GetComponent<AudioSource>().Play(0);
-    }
-
-    IEnumerator destroySoundPlay()
-    {
-        Debug.Log("Destroying building.");
-        musicDestroyCopy = (GameObject) Instantiate(musicDestroy, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
-        musicDestroyCopy.GetComponent<AudioSource>().Play(0);
-        yield return new WaitForSeconds(3);
-        //Destroy(musicDestroyCopy);
+        Destroy(musicBuildCopy);
+        musicDestroy.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        musicDestroy.GetComponent<AudioSource>().Play(0);
     }
 }

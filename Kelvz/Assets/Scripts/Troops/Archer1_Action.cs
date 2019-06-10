@@ -68,6 +68,7 @@ public class Archer1_Action : MonoBehaviour
     public void Attack(GameObject other_obj){
         other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
         // Debug.Log("Archer attacked: -"+attack_strength);
+        gameObject.GetComponent<AudioSource>().Play(0);
     }
     public void Attack_trigger()
     {

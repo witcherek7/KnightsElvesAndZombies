@@ -73,6 +73,7 @@ public class Hero_Action : MonoBehaviour
     }
     public void Attack(GameObject other_obj){
         other_obj.SendMessage("TakeDamage", attack_strength, SendMessageOptions.DontRequireReceiver);
+        gameObject.GetComponent<AudioSource>().Play(0);
         // Debug.Log("Hero attacked: -"+attack_strength);
     }
 
