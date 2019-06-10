@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final_scenes/Menu.unity
     guid: 242e5702fd60d68489c61e97e9a5756f
   - enabled: 1
-    path: Assets/Scenes/Szymon_scenes/Level.unity
+    path: Assets/Scenes/Szymon_scenes/Level_szymon.unity
     guid: bb4e681a4743a2741a218d82fb23a6b3
   m_configObjects: {}
