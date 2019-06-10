@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dc73c955f92f447b7ce807b3815ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1000
   musicBuild: {fileID: 5453172960264115514, guid: e6a159b402cb72f47ac6f9fa22c9f5a2,
     type: 3}
   musicDestroy: {fileID: 2548702024859225542, guid: fbe29629dcf84a949b15e2a7bf5350d4,

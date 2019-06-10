@@ -19,7 +19,7 @@ public class MoveCamera : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if(transform.position.x <= 242)
+            if(transform.position.x <= 146.7)
             {
             
            //transform.position = new Vector2(speed * Time.deltaTime, 0);

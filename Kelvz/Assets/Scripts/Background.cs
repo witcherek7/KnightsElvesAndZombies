@@ -12,7 +12,7 @@ public class Background : MonoBehaviour
     private int minutes = 0;
     public int hours = 7;
     public int days = 0;
-    private int dayTimeMinutes = 3*420;
+    private int dayTimeMinutes = 420;
     private float opacity = 1f;
     private GameObject mask;
 

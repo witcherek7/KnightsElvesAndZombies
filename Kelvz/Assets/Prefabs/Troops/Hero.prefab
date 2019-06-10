@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa5dcadd96d24b4288c3171c2e1abd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  attack_strength: 10
+  health: 200
+  attack_strength: 15
   animation_time: 1
   flaga: {fileID: 0}
 --- !u!82 &3349386710593948935

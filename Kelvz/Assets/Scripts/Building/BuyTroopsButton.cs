@@ -41,16 +41,24 @@ public class BuyTroopsButton : MonoBehaviour
 
     bool CanIBuild()
     {
-        if(GameObject.Find("Player").GetComponent<Player>().gold>=price)
+        if(gameObject.transform.childCount<4)
         {
-            Debug.Log("Player gold before build: " + GameObject.Find("Player").GetComponent<Player>().gold);
-            GameObject.Find("Player").GetComponent<Player>().spendGold(price);
-            return true;
+            if(GameObject.Find("Player").GetComponent<Player>().gold>=price)
+            {
+                Debug.Log("Player gold before build: " + GameObject.Find("Player").GetComponent<Player>().gold);
+                GameObject.Find("Player").GetComponent<Player>().spendGold(price);
+                return true;
+            }
+            else
+            {
+                GameObject.Find("Player_Messages_Text").GetComponent<Messages>().DisplayMessage("Lack of gold.");
+                Debug.Log("Player gold: " + GameObject.Find("Player").GetComponent<Player>().gold);
+                return false;
+            }
         }
         else
         {
-            GameObject.Find("Player_Messages_Text").GetComponent<Messages>().DisplayMessage("Lack of gold.");
-            Debug.Log("Player gold: " + GameObject.Find("Player").GetComponent<Player>().gold);
+            GameObject.Find("Player_Messages_Text").GetComponent<Messages>().DisplayMessage("Soldiers limit reached for this building.");
             return false;
         }
     }
@@ -80,7 +88,8 @@ public class BuyTroopsButton : MonoBehaviour
                 else
                 {
                     tempSoldier = (GameObject)Instantiate(soldier,new Vector2(gameObject.transform.position.x,gameObject.transform.position.y-1),Quaternion.identity);
-                    tempSoldier.transform.parent =  GameObject.Find("Player").transform;
+                    //tempSoldier.transform.parent =  GameObject.Find("Player").transform;
+                    tempSoldier.transform.parent =  gameObject.transform;
                     progressCountInt = 0;
                     GameObject.Find("Player").GetComponent<Player>().soldierList.Add(tempSoldier);
                     Debug.Log(GameObject.Find("Player").GetComponent<Player>().soldierList.Count);

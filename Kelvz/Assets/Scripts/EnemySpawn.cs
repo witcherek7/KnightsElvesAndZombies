@@ -48,15 +48,26 @@ public class EnemySpawn : MonoBehaviour
     {
         while (isProducing)
         {
-            yield return new WaitForSeconds(5f-days/10/multiplier);
+            // if (gameObject.name == "EnemySpawn2")
+            // {
+            //     yield return new WaitForSeconds(10f - multiplier);
+            //     Instantiate(enemy01, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            // }
+            // else
+            // {
+            //     yield return new WaitForSeconds(10f - multiplier);
+            //     Instantiate(enemy01, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+            // }
+            yield return new WaitForSeconds(10f - multiplier);
             Instantiate(enemy01, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+
         }
     }
     IEnumerator intervalEnemy2()
     {
         while (isProducing)
         {
-            yield return new WaitForSeconds(20f-days/10/multiplier);
+            yield return new WaitForSeconds(20f - 2 * multiplier);
             Instantiate(enemy02, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         }
     }

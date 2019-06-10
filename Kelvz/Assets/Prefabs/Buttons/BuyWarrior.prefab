@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ded844f0914dd4f9d204a465122345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 3
+  price: 20
   createMusic: {fileID: 6275601061815800077, guid: b30f1a0df29e49e4a9f9fac38179996a,
     type: 3}
   soldier: {fileID: 3249643020284618845, guid: 9b833cbe63d6c8c489d92ed586ab6587, type: 3}
