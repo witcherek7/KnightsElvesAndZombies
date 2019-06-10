@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 5
+  createMusic: {fileID: 6275601061815800077, guid: b30f1a0df29e49e4a9f9fac38179996a,
+    type: 3}
   soldier: {fileID: 100000, guid: b7a626342e930e34a875da54fbc9077c, type: 3}
   canvasTextPrefab: {fileID: 7729564107217996194, guid: 0aaef8a47abf7ca4b964693588cdfc9d,
     type: 3}

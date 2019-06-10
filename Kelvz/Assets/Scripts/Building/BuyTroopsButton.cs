@@ -7,6 +7,8 @@ public class BuyTroopsButton : MonoBehaviour
     public int price;
     private float elapsed;
     private int progressCountInt = 0;
+    public GameObject createMusic;
+    private GameObject createMusicCopy;
     public GameObject soldier;
     private SpriteRenderer SpriteRenderer;
     private Color spriteOpacityFull = new Color (1f, 1f, 1f, 1f);
@@ -24,6 +26,8 @@ public class BuyTroopsButton : MonoBehaviour
         canvasTextCopy.transform.parent = gameObject.transform;
         text = canvasTextCopy.transform.GetChild(0).gameObject.GetComponent<Text>();    
         ShowPrice();
+        createMusicCopy = (GameObject) Instantiate(createMusic, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
+
 
 
     }
@@ -82,7 +86,8 @@ public class BuyTroopsButton : MonoBehaviour
                     Debug.Log(GameObject.Find("Player").GetComponent<Player>().soldierList.Count);
                     toBuild = false;
                    ShowPrice();
-                   
+                    createMusicCopy.GetComponent<AudioSource>().Play(0);
+                    
                 }
 
             }
@@ -111,5 +116,8 @@ public class BuyTroopsButton : MonoBehaviour
     }
     private void OnMouseExit() {
         SpriteRenderer.color = spriteOpacityHalf;
+    }
+    private void OnDestroy() {
+        Destroy(createMusicCopy);
     }
 }

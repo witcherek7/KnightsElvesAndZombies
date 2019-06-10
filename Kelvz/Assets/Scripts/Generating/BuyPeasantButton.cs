@@ -8,6 +8,8 @@ public class BuyPeasantButton : MonoBehaviour
     // Start is called before the first frame update
 
     private int peasantNumber = 0;
+    public GameObject createMusic;
+    private GameObject createMusicCopy;
     public int price;
     private float elapsed;
     private int progressCountInt = 0;
@@ -35,6 +37,8 @@ public class BuyPeasantButton : MonoBehaviour
         canvasTextCopy.transform.parent = gameObject.transform;
         text = canvasTextCopy.transform.GetChild(0).gameObject.GetComponent<Text>();
         ShowPrice();
+        createMusicCopy = (GameObject) Instantiate(createMusic, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
+
 
 
     }
@@ -109,6 +113,8 @@ public class BuyPeasantButton : MonoBehaviour
                     {
                         peasantRandomizer = 0;
                     }
+                    createMusicCopy.GetComponent<AudioSource>().Play(0);
+                    
 
                 }
 
@@ -142,5 +148,8 @@ public class BuyPeasantButton : MonoBehaviour
     private void OnMouseExit()
     {
         SpriteRenderer.color = spriteOpacityHalf;
+    }
+    private void OnDestroy() {
+        Destroy(createMusicCopy);
     }
 }

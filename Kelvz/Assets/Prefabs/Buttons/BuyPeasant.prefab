@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8150df5a91f92c4681d4deb56fb9db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createMusic: {fileID: 6275601061815800077, guid: b30f1a0df29e49e4a9f9fac38179996a,
+    type: 3}
   price: 3
   peasant1: {fileID: 782053909, guid: 645e06fef67e2154bb53431e8d3918dc, type: 3}
   peasant2: {fileID: 836831643, guid: 771552af97eed0b4bad7850b8c86a33b, type: 3}

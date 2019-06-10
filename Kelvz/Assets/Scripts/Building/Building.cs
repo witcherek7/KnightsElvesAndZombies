@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     public int health = 100;
+    public GameObject musicBuild, musicDestroy;
+    private GameObject musicBuildCopy, musicDestroyCopy;
     private SpriteRenderer spriteRenderer;
     private Transform transform;
     private Color spriteOpacityStart = new Color(1f, 1f, 1f, 0.01f);
@@ -23,6 +25,7 @@ public class Building : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         transform = gameObject.GetComponent<Transform>();
         spriteRenderer.color = spriteOpacityStart;
+        musicBuildCopy = (GameObject) Instantiate(musicBuild, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
 
         //progressCanvasCopy = (GameObject)Instantiate(progressCanvas, new Vector2(transform.position.x, transform.position.y + 2), Quaternion.identity);
         //progressCanvasCopy.transform.parent = transform;
@@ -45,6 +48,7 @@ public class Building : MonoBehaviour
 
                 if (progressCountInt < 100)
                 {
+                    musicBuildCopy.GetComponent<AudioSource>().Play(0);
                     progressCount = progressCount + 0.05f;
                     progressCountInt = progressCountInt + 5;
                     spriteRenderer.color = new Color(1f, 1f, 1f, progressCount);
@@ -56,6 +60,7 @@ public class Building : MonoBehaviour
                 {
                     isBuilding = false;
                     Destroy(progressCanvasCopy);
+                    Destroy(musicBuildCopy);
                     if (gameObject.name == "armory(Clone)")
                     {
                         gameObject.GetComponent<Armory>().ShowButtons();
@@ -68,6 +73,7 @@ public class Building : MonoBehaviour
 
             }
         }
+
     }
 
     void DisplayHealth()
@@ -93,5 +99,23 @@ public class Building : MonoBehaviour
     {
         BuildMe();
 
+    }
+
+
+    void OnDestroy()
+    {
+        //StartCoroutine(destroySoundPlay());
+
+        musicDestroyCopy = (GameObject) Instantiate(musicDestroy, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
+        musicDestroyCopy.GetComponent<AudioSource>().Play(0);
+    }
+
+    IEnumerator destroySoundPlay()
+    {
+        Debug.Log("Destroying building.");
+        musicDestroyCopy = (GameObject) Instantiate(musicDestroy, new Vector2(gameObject.transform.position.x,transform.position.y), Quaternion.identity);
+        musicDestroyCopy.GetComponent<AudioSource>().Play(0);
+        yield return new WaitForSeconds(3);
+        //Destroy(musicDestroyCopy);
     }
 }

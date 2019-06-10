@@ -156,6 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  musicBuild: {fileID: 5453172960264115514, guid: e6a159b402cb72f47ac6f9fa22c9f5a2,
+    type: 3}
+  musicDestroy: {fileID: 2548702024859225542, guid: fbe29629dcf84a949b15e2a7bf5350d4,
+    type: 3}
   isBuilding: 1
   initiateBuilding: 0
 --- !u!114 &8372839630674720976
@@ -375,6 +379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729564108250694338, guid: 0aaef8a47abf7ca4b964693588cdfc9d,
+        type: 3}
+      propertyPath: m_Text
+      value: 0 %
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aaef8a47abf7ca4b964693588cdfc9d, type: 3}
