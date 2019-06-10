@@ -19,7 +19,9 @@ public class SecondSpawn : MonoBehaviour
 
     void OnDestroy()
     {
-        canvas.SetActive(true);
-        GameObject.Find("KilledText").GetComponent<Text>().text = GameObject.Find("EnemiesCount").GetComponent<Count>().inTotal + " skeletors killed.";
+        if (canvas){
+            canvas.SetActive(true);
+            GameObject.Find("KilledText").GetComponent<Text>().text = GameObject.Find("EnemiesCount").GetComponent<Count>().inTotal + " skeletors killed.";
+        }
     }
 }

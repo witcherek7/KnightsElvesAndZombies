@@ -27,12 +27,16 @@ public class ScrollingBackground : MonoBehaviour {
     private void getDirection()
     {
         Vector2 mouse_pos = Input.mousePosition;
-        if (mouse_pos.x > pixel_right)
-        {
+        if (Input.GetKey(KeyCode.LeftArrow)){
             Speed = speed_mem;
             Dir = Direction.Left;
         }
-        else if (mouse_pos.x < pixel_left)
+        // if (mouse_pos.x > pixel_right)
+        // {
+        //     Speed = speed_mem;
+        //     Dir = Direction.Left;
+        // }
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             Speed = speed_mem;
             Dir = Direction.Right;
@@ -50,8 +54,8 @@ public class ScrollingBackground : MonoBehaviour {
         widthCamera = heightCamera * cam.aspect;
         
         currResolution = Screen.currentResolution;
-        pixel_right = Convert.ToInt32(currResolution.width * (1-margin));
-        pixel_left = Convert.ToInt32(currResolution.width *margin);
+        // pixel_right = Convert.ToInt32(currResolution.width * (1-margin));
+        // pixel_left = Convert.ToInt32(currResolution.width *margin);
         
         speed_mem = Speed;
     }

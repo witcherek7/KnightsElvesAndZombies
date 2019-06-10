@@ -14,11 +14,14 @@ public class Background : MonoBehaviour
     public int days = 0;
     private int dayTimeMinutes = 3*420;
     private float opacity = 1f;
+    private GameObject mask;
 
     // Start is called before the first frame update
     // Start time should be 7:00
     void Start()
     {
+        nightCloud = GameObject.Find("RedMoonBackground");
+        mask = GameObject.Find("Dark");
 
     }
 
@@ -57,12 +60,31 @@ public class Background : MonoBehaviour
 
         if (hours > 19 || hours < 7)
         {
+            // Debug.Log("Włączamy noc");
+
+            // włączamy nocne tło
+            if(!nightCloud.active){
+                nightCloud.SetActive(true);
+                // Debug.Log("Nightcloud set active: "+nightCloud.name.ToString());
+            }
+            if(mask){
+                if(!mask.active){
+                    mask.SetActive(true);
+                }
+            }
+            // 
             if (opacity > 0)
             {
+                // // 
+                // nightCloud = GameObject.Find("RedMoonBackground");
+                // nightCloud.SetActive(true);
+                // // 
                 //Debug.Log("Getting darker");
                 elapsedDay += Time.deltaTime;
                 if (elapsedDay >= 0.5f)
                 {
+                    // Debug.Log("Getting Darker");
+
                     elapsedDay = elapsedDay % 0.5f;
                     opacity = opacity - 0.02f;
 
@@ -70,7 +92,9 @@ public class Background : MonoBehaviour
                     Music_Night.GetComponent<AudioSource>().volume = 1 - opacity;
                     
                     dayCloud.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity);
-
+                    if(mask){
+                        mask.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (1-opacity)*0.5f);
+                    }
 
                 }
             }
@@ -90,8 +114,24 @@ public class Background : MonoBehaviour
                     opacity = opacity + 0.02f;
 
                     dayCloud.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacity);
+                    mask.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (1-opacity)*0.5f);
+
 
                 }
+            }
+            else {
+                // wyłączamy nocne tło
+                if(nightCloud.active){
+                    // Debug.Log("Wyłączamy komponent nocy");
+                    nightCloud.SetActive(false);
+                }
+                if (mask){
+                    if (mask.active){
+                        mask.SetActive(false);
+                    }
+                }
+ 
+                // 
             }
         }
 
