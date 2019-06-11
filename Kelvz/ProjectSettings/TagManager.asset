@@ -19,6 +19,8 @@ TagManager:
   - tower_trigger
   - flag_trigger
   - end_of_map
+  - GoldenBall
+  - end_of_city
   layers:
   - Default
   - TransparentFX

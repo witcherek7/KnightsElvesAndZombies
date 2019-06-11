@@ -51,7 +51,7 @@ public class WalkOnTrigger : MonoBehaviour
 //            _animator.SetTrigger(Buidling);
         }
 
-        if (other.gameObject.CompareTag("tower_trigger") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("tower_trigger") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("end_of_city"))
         {
             // _animator.SetTrigger("Reverse");
             if(localScale.x > 0){
